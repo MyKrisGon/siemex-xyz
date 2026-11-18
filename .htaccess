@@ -2,6 +2,15 @@
 Options -Indexes
 DirectoryIndex index.html
 
+# Las páginas deben decir que son HTML: sin este encabezado WhatsApp y las redes no arman la vista previa
+AddType text/html .html
+AddDefaultCharset UTF-8
+<IfModule mod_headers.c>
+  <FilesMatch "\.html$">
+    Header set Content-Type "text/html; charset=UTF-8"
+  </FilesMatch>
+</IfModule>
+
 RewriteEngine On
 
 # Forzar HTTPS (compatible con Cloudflare / proxies)
