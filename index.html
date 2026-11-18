@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Plataforma SIEMEX: tu negocio en un solo lugar</title>
+<meta name="description" content="La app para ver si tu página, tus redes y tus anuncios te traen clientes, contestar tus mensajes y crear tu contenido. Pide tu acceso al piloto y tu diagnóstico gratis.">
+<link rel="canonical" href="https://siemex.xyz/">
+<link rel="alternate" hreflang="es" href="https://siemex.xyz/">
+<link rel="alternate" hreflang="en" href="https://siemex.xyz/en/">
+<link rel="alternate" hreflang="x-default" href="https://siemex.xyz/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_MX">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:site_name" content="SIEMEX">
+<meta property="og:url" content="https://siemex.xyz/">
+<meta property="og:title" content="Tu negocio está en internet. ¿Te está trayendo clientes?">
+<meta property="og:description" content="Plataforma SIEMEX: tus números, tus mensajes y tu contenido en un solo lugar. Piloto gratis y diagnóstico de tu negocio.">
+<meta property="og:image" content="https://siemex.xyz/og-siemex-es.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:alt" content="SIEMEX: tu negocio en un solo lugar, con un asistente con IA">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://siemex.xyz/og-siemex-es.jpg">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#050507; --bg-2:#0a0a0c; --line:#26262d; --text:#fff;
+    --muted:rgba(255,255,255,.72); --soft:rgba(255,255,255,.55);
+    --accent:#FFC700; --accent-soft:rgba(255,199,0,.12);
+    --display:"Space Grotesk","Helvetica Neue",system-ui,sans-serif;
+    --body:Inter,system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,monospace;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 var(--body);-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+  @media(min-width:720px){.wrap{padding:0 32px}}
+  .mono{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+
+  /* nav */
+  header{position:sticky;top:0;z-index:10;background:rgba(5,5,7,.86);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:60px;gap:12px}
+  .brand{display:flex;align-items:center;gap:8px;text-decoration:none;font-family:var(--display);font-weight:600;letter-spacing:.02em}
+  .brand svg{width:18px;height:18px;filter:drop-shadow(0 0 4px rgba(255,199,0,.4))}
+  .brand small{font-family:var(--mono);font-size:11px;color:var(--soft);font-weight:400}
+  .btn{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#050507;text-decoration:none;font-weight:600;padding:14px 22px;border:1px solid var(--accent);transition:transform .15s,box-shadow .15s}
+  .btn:hover{transform:translateY(-1px);box-shadow:0 6px 24px rgba(255,199,0,.25)}
+  .btn:focus-visible,.ghost:focus-visible{outline:2px solid #fff;outline-offset:3px}
+  .btn.sm{padding:9px 14px;font-size:14px}
+  .ghost{display:inline-flex;align-items:center;gap:8px;color:var(--text);text-decoration:none;padding:14px 22px;border:1px solid var(--line)}
+  .ghost:hover{border-color:var(--soft)}
+  @media(max-width:520px){.nav .btn.sm{display:none}}
+  @media(max-width:420px){.hide-sm{display:none}}
+
+  /* hero */
+  .hero{padding:72px 0 64px;border-bottom:1px solid var(--line);background:
+    radial-gradient(600px 300px at 85% 0%,rgba(255,199,0,.10),transparent 70%)}
+  .hero h1{font-family:var(--display);font-weight:600;font-size:clamp(34px,6vw,60px);line-height:1.05;letter-spacing:-.02em;margin:18px 0 20px;max-width:15ch}
+  .hero h1 em{font-style:normal;color:var(--accent)}
+  .hero p.lead{font-size:clamp(17px,2.2vw,20px);color:var(--muted);max-width:56ch;margin:0 0 32px}
+  .cta{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+  .facts{display:flex;flex-wrap:wrap;gap:8px 24px;margin-top:28px;font-family:var(--mono);font-size:13px;color:var(--soft)}
+  .facts span::before{content:"▸ ";color:var(--accent)}
+
+  /* sections */
+  section{padding:72px 0;border-bottom:1px solid var(--line)}
+  h2{font-family:var(--display);font-weight:600;font-size:clamp(26px,4vw,38px);line-height:1.15;letter-spacing:-.01em;margin:10px 0 14px;max-width:24ch}
+  .sub{color:var(--muted);max-width:60ch;margin:0 0 36px}
+  .grid{display:grid;gap:1px;background:var(--line);border:1px solid var(--line)}
+  @media(min-width:720px){.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}}
+  .card{background:var(--bg-2);padding:26px 22px}
+  .card .n{font-family:var(--mono);font-size:12px;color:var(--accent)}
+  .card h3{font-family:var(--display);font-weight:600;font-size:19px;line-height:1.25;margin:10px 0 8px}
+  .card p{margin:0;color:var(--muted);font-size:15px}
+  .quote{font-family:var(--display);font-size:18px;line-height:1.35;color:var(--text)}
+
+  .offer{display:grid;gap:24px}
+  @media(min-width:860px){.offer{grid-template-columns:1.2fr 1fr;align-items:start}}
+  .box{border:1px solid var(--accent);background:var(--accent-soft);padding:28px 24px}
+  .box h3{font-family:var(--display);font-size:22px;margin:8px 0 14px}
+  .box ul{margin:0;padding:0;list-style:none}
+  .box li{padding:10px 0;border-top:1px solid rgba(255,199,0,.25);color:var(--muted)}
+  .box li b{color:var(--text);font-weight:600}
+  .box li:first-child{border-top:none}
+  .side .card{margin-bottom:1px}
+
+  .fit{display:grid;gap:24px}
+  @media(min-width:720px){.fit{grid-template-columns:1fr 1fr}}
+  .fit ul{margin:0;padding:0;list-style:none}
+  .fit li{padding:12px 0 12px 28px;border-top:1px solid var(--line);position:relative;color:var(--muted)}
+  .fit li::before{position:absolute;left:0;top:12px;font-family:var(--mono)}
+  .yes li::before{content:"✓";color:var(--accent)}
+  .no li::before{content:"✕";color:var(--soft)}
+  .fit h3{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--soft);font-weight:500;margin:0 0 6px}
+
+  details{border-top:1px solid var(--line);padding:18px 0}
+  details:last-child{border-bottom:1px solid var(--line)}
+  summary{cursor:pointer;list-style:none;font-family:var(--display);font-size:18px;font-weight:500;display:flex;justify-content:space-between;gap:16px}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";color:var(--accent);font-family:var(--mono)}
+  details[open] summary::after{content:"−"}
+  details p{color:var(--muted);margin:12px 0 0;max-width:68ch}
+
+  .final{text-align:center;border-bottom:none;background:radial-gradient(500px 240px at 50% 100%,rgba(255,199,0,.10),transparent 70%)}
+  .final h2{margin:10px auto 14px}
+  .final .sub{margin:0 auto 30px}
+  .final .cta{justify-content:center}
+
+  footer{border-top:1px solid var(--line);padding:32px 0 40px;font-size:14px;color:var(--soft)}
+  .foot{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between}
+  footer a{color:var(--muted)}
+  footer a:hover{color:var(--accent)}
+  .lang{font-family:var(--mono);font-size:12px;color:var(--soft);text-decoration:none;padding:6px 8px;border:1px solid var(--line)}
+  .lang:hover{color:var(--accent);border-color:var(--accent)}
+  .navr{display:flex;align-items:center;gap:10px}
+  @media(min-width:720px){.road{grid-template-columns:repeat(3,1fr)}}
+  .tiers{display:grid;gap:24px}
+  @media(min-width:860px){.tiers{grid-template-columns:1fr 1fr;align-items:stretch}}
+  .tier{border:1px solid var(--line);background:var(--bg-2);padding:28px 24px;display:flex;flex-direction:column;gap:10px}
+  .tier.beta{border-color:var(--accent);background:var(--accent-soft)}
+  .tier h3{font-family:var(--display);font-size:22px;margin:4px 0 4px}
+  .tier ul{margin:0;padding:0;list-style:none}
+  .tier li{padding:10px 0;border-top:1px solid var(--line);color:var(--muted)}
+  .tier.beta li{border-top-color:rgba(255,199,0,.25)}
+  .tier li:first-child{border-top:none}
+  .tier li b{color:var(--text);font-weight:600}
+  .tier .who{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--soft)}
+  .tier.beta .who{color:var(--accent)}
+  .plus{margin-top:24px;display:grid;gap:1px;background:var(--line);border:1px solid var(--line)}
+  @media(min-width:720px){.plus{grid-template-columns:1fr 1fr}}
+
+  /* formulario de acceso */
+  .form{display:grid;gap:16px;max-width:640px;margin:0 auto;text-align:left}
+  @media(min-width:720px){.form .two{display:grid;grid-template-columns:1fr 1fr;gap:16px}}
+  .form .two{display:grid;gap:16px}
+  .form label{display:block;font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--soft);margin-bottom:6px}
+  .form input,.form select{width:100%;background:var(--bg-2);border:1px solid var(--line);color:var(--text);font:16px var(--body);padding:12px 14px;border-radius:0}
+  .form input:focus,.form select:focus{outline:none;border-color:var(--accent)}
+  .form .opts{display:flex;flex-wrap:wrap;gap:8px}
+  .form .opts label{display:inline-flex;align-items:center;gap:8px;margin:0;padding:10px 14px;border:1px solid var(--line);cursor:pointer;text-transform:none;letter-spacing:0;font:15px var(--body);color:var(--muted)}
+  .form .opts input{width:20px;height:20px;accent-color:#FFC700}
+  .form .opts label:has(input:checked){border-color:var(--accent);color:var(--text);background:var(--accent-soft)}
+  .form .check{display:flex;gap:10px;align-items:flex-start;text-transform:none;letter-spacing:0;font:14px/1.5 var(--body);color:var(--muted)}
+  .form .check input{width:20px;height:20px;flex-shrink:0;margin-top:2px;accent-color:#FFC700}
+  .form .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+  .form button{cursor:pointer;border:none;justify-self:start;font-family:var(--body);font-size:16px}
+  section{scroll-margin-top:60px}
+  .form .msg{font-size:15px;color:var(--muted)}
+  .form .msg.err{color:#ff8a7a}
+  .ok{display:none;max-width:640px;margin:0 auto;border:1px solid var(--accent);background:var(--accent-soft);padding:28px 24px}
+  .ok h3{font-family:var(--display);font-size:22px;margin:0 0 8px}
+  .ok p{margin:0;color:var(--muted)}
+  .price{font-family:var(--display);font-size:30px;font-weight:600;color:var(--text);margin:2px 0}
+</style>
+<!-- Google Analytics 4 (Plataforma SIEMEX) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LP867RK1P6"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LP867RK1P6');</script>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="/" aria-label="SIEMEX, inicio">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M18 4 L9 18 L14 18 L13 28 L23 13 L17 13 Z" fill="#FFC700"/></svg>
+      SIEMEX <small class="hide-sm">::PLATAFORMA</small>
+    </a>
+    <div class="navr">
+      <a class="lang" href="https://plataforma.siemex.xyz/entrar?lang=es">Entrar</a>
+      <a class="lang" href="/en/" hreflang="en" lang="en" title="English">EN</a>
+      <a class="btn sm" href="#acceso">Solicitar acceso</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="hero">
+    <div class="wrap">
+      <div class="mono">[ Piloto abierto para dueños de negocio ]</div>
+      <h1>Tu negocio está en internet. <em>¿Te está trayendo clientes?</em></h1>
+      <p class="lead">Plataforma SIEMEX es tu app con un asistente de IA que conoce tu negocio: te muestra en un solo lugar si tu página, tus redes y tus anuncios te traen clientes, te ayuda a contestar tus mensajes y a crear tu contenido, sin complicaciones. Está en piloto: los negocios que entran ahora la usan <strong>gratis</strong> y conservan un <strong>precio de fundador</strong>.</p>
+      <div class="cta">
+        <a class="btn" href="#acceso" data-want="ambos">Solicitar acceso →</a>
+        <a class="ghost" href="#acceso" data-want="diagnostico">Pedir mi diagnóstico gratis</a>
+      </div>
+      <div class="facts"><span>Gratis durante el piloto</span><span>App y web</span><span>Español e inglés</span><span>México, EE.UU. y Canadá</span></div>
+    </div>
+  </div>
+
+  <section id="te-pasa">
+    <div class="wrap">
+      <div class="mono">[ 01 · ¿Te pasa esto? ]</div>
+      <h2>Si te identificas con alguna, la app es para ti.</h2>
+      <p class="sub">En muchos negocios, una persona hizo la página, otra se encarga de las redes y los mensajes de los clientes llegan al celular del dueño. Al final, nadie sabe decir si lo que se paga está funcionando.</p>
+      <div class="grid g4">
+        <div class="card"><div class="n">01</div><p class="quote">"No sé cuántos clientes me llegan por internet."</p></div>
+        <div class="card"><div class="n">02</div><p class="quote">"Tengo todo regado: la página por un lado y las redes por otro."</p></div>
+        <div class="card"><div class="n">03</div><p class="quote">"Para cambiar algo en mi página tengo que esperar semanas."</p></div>
+        <div class="card"><div class="n">04</div><p class="quote">"No tengo tiempo de pensar qué publicar ni dónde anunciarme."</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="la-app">
+    <div class="wrap">
+      <div class="mono">[ 02 · Lo que hace la app ]</div>
+      <h2>Todo lo de tu negocio en internet, en un solo lugar.</h2>
+      <p class="sub">Pensada para dueños de negocio, no para expertos en computadoras. Todo en palabras sencillas.</p>
+      <div class="grid g3">
+        <div class="card"><div class="n">Tus números</div><h3>Tus números, claros</h3><p>Cuántas personas te contactaron, cuántas visitaron tu página y cuánto te costó cada cliente, con datos reales de Google y de tus anuncios.</p></div>
+        <div class="card"><div class="n">Analista</div><h3>Te dice qué conviene hacer</h3><p>Recomendaciones con el porqué y los pasos. Tú decides: lo haces tú, lo hace Desarrollo SIEMEX o lo dejas para después.</p></div>
+        <div class="card"><div class="n">WhatsApp</div><h3>Tus mensajes, en orden</h3><p>Una bandeja de WhatsApp con respuestas automáticas para no dejar a ningún cliente sin contestar.</p></div>
+        <div class="card"><div class="n">Contenido</div><h3>Contenido con IA</h3><p>Ideas, textos, imágenes y videos para tus redes. Pagas solo lo que usas, con créditos.</p></div>
+        <div class="card"><div class="n">Redes</div><h3>Publica y programa</h3><p>Publica y programa en Facebook e Instagram desde la misma app.</p></div>
+        <div class="card"><div class="n">Ayuda</div><h3>Desarrollo SIEMEX, a un clic</h3><p>¿Prefieres que lo hagan por ti? Contratas servicios con precio fijo dentro de la app.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="que-ganas">
+    <div class="wrap">
+      <div class="mono">[ 03 · Qué te llevas ]</div>
+      <h2>Algo útil hoy y la app para todos los días.</h2>
+      <p class="sub">Todos los que soliciten acceso reciben su diagnóstico. Los negocios que entran al piloto usan la app gratis.</p>
+      <div class="tiers">
+        <div class="tier">
+          <div class="who">Para todos</div>
+          <h3>Diagnóstico gratis de tu negocio en internet</h3>
+          <ul><li><b>Tu página web:</b> si carga rápido en el celular y si es fácil que te contacten.</li><li><b>Tu ficha en Google Maps:</b> cómo te ve la gente que te busca cerca.</li><li><b>Tus redes sociales:</b> si publicas seguido y si respondes a tus clientes.</li><li><b>3 cosas que puedes hacer tú mismo</b> y lo que Desarrollo SIEMEX puede hacer por ti. Te lo enviamos en 48 horas hábiles.</li></ul>
+        </div>
+        <div class="tier beta">
+          <div class="who">Piloto</div>
+          <h3>Usa la app con tu propio negocio</h3>
+          <ul><li><b>Gratis</b> mientras dure el piloto. Sin tarjeta.</li><li><b>Te ayudamos paso a paso</b> a conectar tu página, tus redes y tus anuncios.</li><li><b>Tu opinión cuenta:</b> lo que nos digas cambia cómo crece la app.</li><li><b>Precio de fundador:</b> 50% de descuento durante 6 meses cuando empiece el cobro.</li></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="precio">
+    <div class="wrap">
+      <div class="mono">[ 04 · Cuánto cuesta ]</div>
+      <h2>Un plan base bajo. Pagas lo demás solo si lo usas.</h2>
+      <p class="sub">No castigamos con una mensualidad alta a quien solo necesita lo básico.</p>
+      <div class="grid g3">
+        <div class="card"><div class="n">Plan base</div><p class="price">$499 MXN al mes</p><p>IVA incluido · $39 USD en EE.UU. · $49 CAD en Canadá. Incluye tablero, recomendaciones, mensajes y publicación en redes.</p></div>
+        <div class="card"><div class="n">Lo que usas</div><p class="price">Créditos y servicios</p><p>Contenido con IA desde $100 MXN por 100 créditos. Servicios de Desarrollo SIEMEX con precio fijo, solo si los pides.</p></div>
+        <div class="card"><div class="n">Fundadores</div><p class="price">50% durante 6 meses</p><p>Para los negocios del piloto. El cobro empieza solo cuando te lo avisamos, y tú decides si sigues.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="como">
+    <div class="wrap">
+      <div class="mono">[ 05 · Cómo funciona ]</div>
+      <h2>Tres pasos sencillos.</h2>
+      <div class="grid g3" style="margin-top:28px">
+        <div class="card"><div class="n">Paso 1</div><h3>Solicitas acceso</h3><p>Nos dejas los datos de tu negocio y tu WhatsApp. Te toma 2 minutos.</p></div>
+        <div class="card"><div class="n">Paso 2</div><h3>Recibes tu diagnóstico</h3><p>En 48 horas hábiles te mandamos lo que encontramos en tu página, tu Google y tus redes.</p></div>
+        <div class="card"><div class="n">Paso 3</div><h3>Te invitamos a la app</h3><p>Si hay lugar en el piloto, te mandamos tu invitación y te ayudamos a conectar tus cuentas.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="para-quien">
+    <div class="wrap">
+      <div class="mono">[ 06 · ¿Es para mí? ]</div>
+      <h2>Buscamos dueños de negocio, no expertos en internet.</h2>
+      <div class="fit" style="margin-top:28px">
+        <div class="yes"><h3>Es para ti si…</h3><ul><li>Tienes un negocio, consultorio o despacho en México, Estados Unidos o Canadá.</li><li>En tu negocio trabajan de 1 a 50 personas.</li><li>Tú decides, o ayudas a decidir, en qué se gasta en publicidad.</li><li>Tienes página web, redes o ficha en Google, aunque estén a medias.</li></ul></div>
+        <div class="no"><h3>No es para ti si…</h3><ul><li>Tienes una agencia de publicidad o de diseño de páginas web.</li><li>Tu negocio todavía es una idea y aún no vende.</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="preguntas">
+    <div class="wrap">
+      <div class="mono">[ 07 · Preguntas frecuentes ]</div>
+      <h2>Lo que seguramente te estás preguntando.</h2>
+      <div style="margin-top:24px">
+        <details><summary>¿De verdad es gratis?</summary><p>Sí. El diagnóstico es gratis y la app también, mientras dure el piloto. Nunca te pedimos tarjeta para entrar. Cuando empiece el cobro te avisamos antes y tú decides si sigues, con tu precio de fundador.</p></details>
+        <details><summary>¿Me van a querer vender algo?</summary><p>Nunca te cobramos nada sin tu aprobación. Si quieres que Desarrollo SIEMEX te haga algo, como una página o tus publicaciones, te damos el precio fijo antes y tú decides.</p></details>
+        <details><summary>¿Qué hacen con mis datos?</summary><p>Tus datos de contacto solo los usamos para enviarte tu diagnóstico, tu invitación y lo que hayas pedido. Nunca publicamos el nombre de un negocio sin su permiso. Todo está en nuestro <a href="/aviso-de-privacidad/">aviso de privacidad</a>.</p></details>
+        <details><summary>¿Quién está detrás de esto?</summary><p>Plataforma SIEMEX la creó <a href="https://desarrollo.siemex.xyz/?c=plataforma" target="_blank" rel="noopener">Desarrollo SIEMEX</a>, una agencia de web y marketing con base en Sinaloa que ha supervisado la entrega de más de 2,000 sitios web. La construimos con código propio y la usamos con nuestros clientes.</p></details>
+        <details><summary>¿En qué celulares funciona?</summary><p>La app de Android llega pronto a Google Play. Mientras tanto, la usas desde el navegador de cualquier celular o computadora en plataforma.siemex.xyz.</p></details>
+        <details><summary>¿Cuántos lugares hay en el piloto?</summary><p>Es un grupo pequeño para acompañar a cada negocio de cerca. Si esta vez no hay lugar, recibes tu diagnóstico y te avisamos en la siguiente etapa.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="final" id="acceso">
+    <div class="wrap">
+      <div class="mono">[ Solicita tu acceso ]</div>
+      <h2>2 minutos hoy. Tu diagnóstico en 48 horas y tu lugar en el piloto.</h2>
+      <p class="sub">Te escribimos por WhatsApp. Sin tarjeta y sin compromiso.</p>
+      <form class="form" id="form-acceso" novalidate>
+        <div class="two">
+          <div><label for="f-name">Tu nombre *</label><input id="f-name" name="name" autocomplete="name" required maxlength="120"></div>
+          <div><label for="f-business">Tu negocio y a qué se dedica *</label><input id="f-business" name="business" required maxlength="200"></div>
+        </div>
+        <div class="two">
+          <div><label for="f-city">Ciudad *</label><input id="f-city" name="city" autocomplete="address-level2" required maxlength="80"></div>
+          <div><label for="f-country">País</label><select id="f-country" name="country"><option value="MX">México</option><option value="US">Estados Unidos</option><option value="CA">Canadá</option></select></div>
+        </div>
+        <div class="two">
+          <div><label for="f-wa">WhatsApp *</label><input id="f-wa" name="whatsapp" type="tel" autocomplete="tel" required maxlength="40"></div>
+          <div><label for="f-email">Correo (opcional)</label><input id="f-email" name="email" type="email" autocomplete="email" maxlength="160"></div>
+        </div>
+        <div><label for="f-site">Tu página o Instagram (opcional)</label><input id="f-site" name="site" maxlength="200"></div>
+        <div><label>¿Qué te interesa?</label><div class="opts"><label><input type="radio" name="want" value="ambos" checked> La app y mi diagnóstico</label><label><input type="radio" name="want" value="app"> Probar la app</label><label><input type="radio" name="want" value="diagnostico"> Solo mi diagnóstico</label></div></div>
+        <label class="check"><input type="checkbox" name="consent" required> <span>Acepto el <a href="/aviso-de-privacidad/">aviso de privacidad</a> y que SIEMEX me escriba por WhatsApp o correo sobre mi diagnóstico y la app.</span></label>
+        <div class="hp" aria-hidden="true"><label>Website<input name="website" tabindex="-1" autocomplete="off"></label></div>
+        <button class="btn" type="submit">Solicitar acceso →</button>
+        <p class="msg" role="status" aria-live="polite"></p>
+      </form>
+      <div class="ok" id="ok-acceso" role="status"><h3>¡Listo! Ya tenemos tu solicitud.</h3><p>Te escribimos por WhatsApp en menos de 48 horas hábiles con tu diagnóstico y los siguientes pasos para entrar a la app.</p></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div>© 2026 SIEMEX · Sinaloa, México</div>
+    <div style="display:flex;flex-wrap:wrap;gap:8px 20px">
+      <a href="/aviso-de-privacidad/">Aviso de privacidad</a>
+      <a href="mailto:contacto@desarrollo.siemex.xyz">contacto@desarrollo.siemex.xyz</a>
+      <a href="https://desarrollo.siemex.xyz/?c=plataforma" target="_blank" rel="noopener">Desarrollo SIEMEX</a>
+      <a href="https://plataforma.siemex.xyz/entrar?lang=es">Entrar a la app</a>
+      <a href="/en/" hreflang="en" lang="en">English</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var form=document.getElementById('form-acceso'),ok=document.getElementById('ok-acceso'),msg=form.querySelector('.msg'),btn=form.querySelector('button');
+  // Los botones de arriba preseleccionan qué le interesa
+  var links=document.querySelectorAll('a[data-want]');
+  for(var i=0;i<links.length;i++)links[i].addEventListener('click',function(){var r=form.querySelector('input[name=want][value='+this.getAttribute('data-want')+']');if(r)r.checked=true;});
+  // Canal de origen (?c=fb, ?utm_source=...) para saber de dónde llega cada solicitud
+  var q=new URLSearchParams(location.search),src=['c','utm_source','utm_medium','utm_campaign','gclid','fbclid'].filter(function(k){return q.get(k)}).map(function(k){return k+'='+q.get(k)}).join('&')||'directo';
+  fetch('/acceso.php',{method:'GET'}).catch(function(){});
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var d=Object.fromEntries(new FormData(form).entries());
+    var digits=(d.whatsapp||'').replace(/\D/g,'');
+    if(!d.name||!d.business||!d.city||digits.length<10||!d.consent){msg.className='msg err';msg.textContent='Completa nombre, negocio, ciudad y un WhatsApp de 10 dígitos, y acepta el aviso.';return;}
+    d.lang='es';d.source=src;d.page=location.pathname;
+    btn.disabled=true;btn.textContent='Enviando…';msg.textContent='';
+    fetch('/acceso.php',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)})
+      .then(function(r){return r.json()})
+      .then(function(j){if(!j.ok)throw new Error(j.error||'');form.style.display='none';ok.style.display='block';
+        if(window.gtag)gtag('event','generate_lead',{form:'acceso',want:d.want,send_to:'G-LP867RK1P6'});if(window.fbq)fbq('track','Lead');})
+      .catch(function(){msg.className='msg err';msg.textContent='No se pudo enviar. Escríbenos por WhatsApp al +52 695 110 3546.';btn.disabled=false;btn.textContent='Solicitar acceso →';});
+  });
+})();
+</script>
+</body>
+</html>

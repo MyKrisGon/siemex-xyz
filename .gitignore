@@ -1,0 +1,4 @@
+# Datos que el servidor genera: nunca van al repo
+data/
+.encuesta-clics.csv
+.well-known/

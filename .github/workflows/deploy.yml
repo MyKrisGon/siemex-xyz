@@ -1,0 +1,40 @@
+# Publica siemex.xyz en HostGator cada vez que hay un push a main. Sube por FTP solo lo que cambió.
+#
+# Secrets en GitHub (Settings > Secrets and variables > Actions):
+#   FTP_SERVER, FTP_USERNAME, FTP_PASSWORD  (cuenta FTP limitada a la carpeta de siemex.xyz)
+#   DEPLOY_DIR  carpeta destino dentro de esa cuenta, con / al final (normalmente ./)
+#
+# Lo que el servidor guarda solo (solicitudes de acceso, contador de la encuesta, certificados)
+# no está en el repo y nunca se sube ni se borra.
+name: Deploy a HostGator
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-siemex-xyz
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Subir por FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: ${{ secrets.DEPLOY_DIR }}
+          exclude: |
+            **/.git*
+            **/.git*/**
+            .github/**
+            README.md
+            data/**
+            .encuesta-clics.csv
+            .well-known/**
