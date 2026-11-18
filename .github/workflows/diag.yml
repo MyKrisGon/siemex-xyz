@@ -1,0 +1,16 @@
+name: Diagnóstico vista previa
+on:
+  push:
+    branches: [diag]
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          for ua in "WhatsApp/2.24.20.79 A" "facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/130.0 Safari/537.36"; do
+            for u in https://siemex.xyz/en/ https://siemex.xyz/og-siemex-en.jpg https://plataforma.siemex.xyz/en/; do
+              echo "=== $ua :: $u"
+              curl -s -o /tmp/b -D - -A "$ua" --max-time 20 "$u" | head -12
+              echo "--- body bytes: $(wc -c < /tmp/b)"; grep -o '<title>[^<]*\|og:title" content="[^"]*' /tmp/b | head -2; head -c 300 /tmp/b | tr '\n' ' '; echo
+            done
+          done
